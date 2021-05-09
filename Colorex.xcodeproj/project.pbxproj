@@ -16,7 +16,6 @@
 		B9F3244D262CC18C000EF4A0 /* ColorexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F3244C262CC18C000EF4A0 /* ColorexTests.swift */; };
 		B9F32458262CC18C000EF4A0 /* ColorexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F32457262CC18C000EF4A0 /* ColorexUITests.swift */; };
 		B9F32484262E0C1C000EF4A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F32483262E0C1C000EF4A0 /* Colors.swift */; };
-		B9F3248926309781000EF4A0 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F3248826309781000EF4A0 /* Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		B9F32457262CC18C000EF4A0 /* ColorexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorexUITests.swift; sourceTree = "<group>"; };
 		B9F32459262CC18C000EF4A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9F32483262E0C1C000EF4A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		B9F3248826309781000EF4A0 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +105,6 @@
 				B9F32437262CC18A000EF4A0 /* SceneDelegate.swift */,
 				B9F32439262CC18A000EF4A0 /* ViewController.swift */,
 				B9F32483262E0C1C000EF4A0 /* Colors.swift */,
-				B9F3248826309781000EF4A0 /* Validation.swift */,
 				B9F3243B262CC18A000EF4A0 /* Main.storyboard */,
 				B9F3243E262CC18C000EF4A0 /* Assets.xcassets */,
 				B9F32440262CC18C000EF4A0 /* LaunchScreen.storyboard */,
@@ -267,7 +264,6 @@
 				B9F3243A262CC18A000EF4A0 /* ViewController.swift in Sources */,
 				B9F32484262E0C1C000EF4A0 /* Colors.swift in Sources */,
 				B9F32436262CC18A000EF4A0 /* AppDelegate.swift in Sources */,
-				B9F3248926309781000EF4A0 /* Validation.swift in Sources */,
 				B9F32438262CC18A000EF4A0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
