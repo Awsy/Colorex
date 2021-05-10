@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		displayView.layer.cornerRadius = 10
 		color = Color(red: redSlider.value, blue: blueSlider.value, green: greenSlider.value)
 		displayView.backgroundColor = color.initColor()
 		[redTextField, greenTextField, blueTextField].forEach {
@@ -53,6 +54,8 @@ class ViewController: UIViewController {
 		
 		blueSlider.value = Float.random(in: 0..<256)
 		blueTextField.text = String(Float.random(in: 0..<256))
+		
+//		setValueForLabel()
 	}
 	
 	
@@ -83,7 +86,7 @@ class ViewController: UIViewController {
 			value = 255
 		}
 		
-		sender.text = String(value)
+//		sender.text = String(value)
 	}
 	
 		private func setValueForLabel() {
