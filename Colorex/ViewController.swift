@@ -40,6 +40,11 @@ class ViewController: UIViewController {
 		blueTextField.text = ""
 		blueTextField.text = String(0.0)
 		blueSlider.value = 0
+		
+		updateColor(redSlider)
+		updateColor(greenSlider)
+		updateColor(blueSlider)
+		
 	}
 	
 	
@@ -47,17 +52,17 @@ class ViewController: UIViewController {
 		
 		redSlider.value = Float.random(in: 0..<256)
 		redTextField.text = String(Float.random(in: 0..<256))
-		// TODO: Make the display view change color
-
+		
 		greenSlider.value = Float.random(in: 0..<256)
 		greenTextField.text = String(Float.random(in: 0..<256))
 		
 		blueSlider.value = Float.random(in: 0..<256)
 		blueTextField.text = String(Float.random(in: 0..<256))
 		
-//		setValueForLabel()
+		updateColor(redSlider)
+		updateColor(greenSlider)
+		updateColor(blueSlider)
 	}
-	
 	
 	
 	@IBAction func textFieldValueChanged(_ sender: UITextField) {
@@ -67,12 +72,14 @@ class ViewController: UIViewController {
 			
 			switch sender.tag {
 				case 4: redSlider.value = currentValue
-					// TODO: Make the textField input change display view
+					updateColor(redSlider)
 				case 5: greenSlider.value = currentValue
+					updateColor(greenSlider)
 				case 6: blueSlider.value = currentValue
+					updateColor(blueSlider)
 				default: break
 			}
-			setValueForLabel()
+			
 		} else {
 			showAlert(title: "Wrong format!", message: "Please enter correct value")
 		}
@@ -86,17 +93,21 @@ class ViewController: UIViewController {
 			value = 255
 		}
 		
-//		sender.text = String(value)
+		
 	}
-	
-		private func setValueForLabel() {
-			redTextField.text = String(redSlider.value)
-			greenTextField.text = String(greenSlider.value)
-			blueTextField.text = String(blueSlider.value)
-		}
 	
 	
 	@IBAction func changeColor(_ sender: UISlider) {
+		if (sender.tag == 1) {
+			updateColor(redSlider)
+		} else if (sender.tag == 2) {
+			updateColor(greenSlider)
+		} else if (sender.tag == 3) {
+			updateColor(blueSlider)
+		}
+	}
+	
+	func updateColor(_ sender: UISlider) {
 		if (sender.tag == 1) {
 			color.setRed(red: sender.value)
 			redTextField.text = color.swapText(str: CGFloat(redSlider.value))
@@ -138,6 +149,4 @@ extension ViewController {
 	}
 	
 }
-
-
 
