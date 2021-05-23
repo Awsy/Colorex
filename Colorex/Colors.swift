@@ -25,14 +25,14 @@ class Color {
 		return color
 	}
 	
-	func swapText(str: CGFloat) -> String {
+	func swapText(_ str: CGFloat) -> String {
 		switch str {
 			case red:
-				return "\(String(format: "%.6f", red))"
+				return "\(red)"
 			case green:
-				return "\(String(format: "%.6f", green))"
+				return "\(green)"
 			case blue:
-				return "\(String(format: "%.6f", blue))"
+				return "\(blue)"
 			default:
 				fatalError("Unsupported")
 		}

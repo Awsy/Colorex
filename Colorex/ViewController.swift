@@ -15,6 +15,10 @@ class ViewController: UIViewController {
 	
 	var color: Color!
 	
+	let RedSliderTag = 4
+	let GreenSliderTag = 5
+	let BlueSliderTag = 6
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -28,17 +32,9 @@ class ViewController: UIViewController {
 	
 	
 	@IBAction func clearTextButton(_ sender: UIButton) {
-		
-		redTextField.text = ""
-		redTextField.text = String(0.0)
+
 		redSlider.value = 0
-		
-		greenTextField.text = ""
-		greenTextField.text = String(0.0)
 		greenSlider.value = 0
-		
-		blueTextField.text = ""
-		blueTextField.text = String(0.0)
 		blueSlider.value = 0
 		
 		updateColor(redSlider)
@@ -51,13 +47,8 @@ class ViewController: UIViewController {
 	@IBAction func randomizeValues(_ sender: UIButton) {
 		
 		redSlider.value = Float.random(in: 0..<256)
-		redTextField.text = String(Float.random(in: 0..<256))
-		
 		greenSlider.value = Float.random(in: 0..<256)
-		greenTextField.text = String(Float.random(in: 0..<256))
-		
 		blueSlider.value = Float.random(in: 0..<256)
-		blueTextField.text = String(Float.random(in: 0..<256))
 		
 		updateColor(redSlider)
 		updateColor(greenSlider)
@@ -66,61 +57,41 @@ class ViewController: UIViewController {
 	
 	
 	@IBAction func textFieldValueChanged(_ sender: UITextField) {
-		guard let text = sender.text else { return }
 		
-		if let currentValue = Float(text) {
-			
+		let value: Float
+		guard let text = sender.text else { return }
+		value = Float(text) ?? 0
+
 			switch sender.tag {
-				case 4: redSlider.value = currentValue
+				case RedSliderTag: redSlider.value = value
 					updateColor(redSlider)
-				case 5: greenSlider.value = currentValue
+				case GreenSliderTag: greenSlider.value = value
 					updateColor(greenSlider)
-				case 6: blueSlider.value = currentValue
+				case BlueSliderTag: blueSlider.value = value
 					updateColor(blueSlider)
 				default: break
 			}
-			
-		} else {
-			showAlert(title: "Wrong format!", message: "Please enter correct value")
-		}
-		
-		var value: Float
-		value = Float(text) ?? 0
-		
-		if value < 0 {
-			value = 0
-		} else if value > 255 {
-			value = 255
-		}
-		
-		
 	}
 	
 	
 	@IBAction func changeColor(_ sender: UISlider) {
-		if (sender.tag == 1) {
-			updateColor(redSlider)
-		} else if (sender.tag == 2) {
-			updateColor(greenSlider)
-		} else if (sender.tag == 3) {
-			updateColor(blueSlider)
-		}
+		updateColor(sender)
 	}
-	
+		
 	func updateColor(_ sender: UISlider) {
+		let newValue = sender.value
 		if (sender.tag == 1) {
-			color.setRed(red: sender.value)
-			redTextField.text = color.swapText(str: CGFloat(redSlider.value))
-			displayView.backgroundColor = color.initColor()
+			color.setRed(red: newValue)
+			redTextField.text = "\(String(format: "%.0f", redSlider.value))"
 		} else if (sender.tag == 2) {
-			color.setGreen(green: sender.value)
-			greenTextField.text = color.swapText(str: CGFloat(greenSlider.value))
-			displayView.backgroundColor = color.initColor()
+			color.setGreen(green: newValue)
+			greenTextField.text = "\(String(format: "%.0f", greenSlider.value))"
 		} else if (sender.tag == 3) {
-			color.setBlue(blue: sender.value)
-			blueTextField.text = color.swapText(str: CGFloat(blueSlider.value))
-			displayView.backgroundColor = color.initColor()
+			color.setBlue(blue: newValue)
+			blueTextField.text = "\(String(format: "%.0f", blueSlider.value))"
 		}
+		
+		displayView.backgroundColor = color.initColor()
 	}
 	
 }
@@ -150,3 +121,10 @@ extension ViewController {
 	
 }
 
+// MARK: - По UI:
+
+/*
+1. Форматирование числа, много знаков после запятой (у меня также, но давай попробуем укоротить, так чтобы всегда было целое число) --- done
+2. Выровнять верстку, справа отступ на 12 pro max. На 12 справа обрезается часть UI
+3. Когда нажимаем крестик справа от текстфилда и нажимаем на другой текст филд - показывается алерт "введите корректрное значение" но по умолчанию не присваивается 0.
+*/
